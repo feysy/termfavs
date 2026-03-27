@@ -1,5 +1,6 @@
 from typing import Optional
 
+from textual import on
 from textual.widget import Widget
 from textual.widgets import Input, Label
 from textual.containers import Horizontal
@@ -33,3 +34,8 @@ class FolderForm(Horizontal):
             id="folder_grid",
             classes="edit_grid",
         )
+
+    @on(Input.Changed)
+    def update_model(self, event: Input.Changed) -> None:
+        if event.input.id == "text_folder_name":
+            self._folder.name = event.value

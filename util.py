@@ -25,8 +25,9 @@ def replace_env_vars(directory: str) -> str:
     result = directory
     matches: List[str] = re.findall(r"\{\$(.*?)\}", directory)
     for match in matches:
-        if match in os.environ:
-            result = result.replace("{$" + match + "}", os.getenv(match))
+        value = os.getenv(match)
+        if value:
+            result = result.replace("{$" + match + "}", value)
     return result
 
 
@@ -49,7 +50,10 @@ def get_commands_file_from_non_standard_locations() -> str:
 
 
 def find_commands_location() -> str:
-    local_path = replace_env_vars("{$HOME}/.config/termfavs/commands.yaml")
+    # Use os.path.expanduser('~') for a more robust cross-platform home directory
+    home = os.path.expanduser("~")
+    local_path = os.path.normpath(os.path.join(home, ".config", "termfavs", "commands.yaml"))
+    
     if os.path.exists(local_path):
         return local_path
 
@@ -92,6 +96,12 @@ def load_saved_commands(file: str) -> Folder:
             exit(1)
         except yaml.YAMLError as exc:
             print(exc)
+
+
+def save_commands(file: str, root_folder: Folder) -> None:
+    data = {"root": root_folder.to_dict()}
+    with open(file, "w") as stream:
+        yaml.dump(data, stream, sort_keys=False)
 
 
 def create_tree_from_commands(tree: TreeNode, folder: Folder) -> None:

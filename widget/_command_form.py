@@ -73,6 +73,10 @@ class CommandForm(Horizontal):
             self.on_run_command()
 
     @on(Input.Changed)
-    def show_invalid_reasons(self, event: Input.Changed) -> None:
+    def update_model(self, event: Input.Changed) -> None:
         if event.input.id == 'text_command':
             self._command.command = event.value
+        elif event.input.id == 'text_command_name':
+            self._command.name = event.value
+        elif event.input.id == 'text_command_desc':
+            self._command.description = event.value

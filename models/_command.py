@@ -6,3 +6,10 @@ class Command(NamedNode):
         super().__init__(name)
         self.description = description
         self.command = command
+
+    def to_dict(self) -> dict:
+        return {
+            "name": self.name,
+            "description": self.description,
+            "command": self.command,
+        }

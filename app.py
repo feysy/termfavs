@@ -10,7 +10,7 @@ logging.basicConfig(filename="textual.log", level="NOTSET")
 
 
 class Main(App):
-    # CSS_PATH = "app.css"
+    CSS_PATH = "screen/main.tcss"
 
     def on_mount(self) -> None:
         path = util.find_commands_location()
@@ -21,6 +21,7 @@ class Main(App):
                 id="main_screen",
                 commands=saved_commands,
                 update_command=self.update_command,
+                commands_path=path,
             )
         )
         self.command = ""
