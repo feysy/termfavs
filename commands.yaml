@@ -1,0 +1,52 @@
+root:
+  name: ""
+  commands:
+    - name: "Pull changes"
+      description: "Pulling changes from GitHub repository\n
+      something\n
+      and other thing"
+      command: "git pull"
+    - name: "Fix widevine on firefox"
+      description: "Updating mozilla plugin transition"
+      command: "sudo setsebool -P unconfined_mozilla_plugin_transition 0"
+  folders:
+    - name: "DB"
+      commands:
+        - name: "Display SKU DEV"
+          description: "Start Cloud SQL for Display SKU"
+          command: "./cloud_sql_proxy -enable_iam_login -instances="
+        - name: "Display SKU DEV"
+          description: "Start Cloud SQL for Display SKU"
+          command: "echo 'Hello World 2'"
+        - name: "Hello World 3"
+          description: "Third Command"
+          command: "echo 'Hello World 3'"
+      folders:
+        - name: "More Hello Worlds"
+          commands:
+            - name: "Hello World 1"
+              description: "First Command"
+              command: "echo 'Hello World'"
+            - name: "Hello World 2"
+              description: "Second Command"
+              command: "echo 'Hello World 2'"
+          folders:
+    - name: "TEST"
+      working_directory: "{$HOME}"
+      commands:
+        - name: "Lets see paths"
+          description: "Lets see paths description, not working"
+          command: 'printf "%s\n" $PATH'
+        - name: "First Command"
+          description: "First Command description"
+          command: "echo 'Hello World'"
+        - name: "Second Command"
+          description: "Second Command description"
+          command: "echo 'Hello World 2'"
+        - name: "Third Command"
+          description: "Third Command description"
+          command: "echo 'Hello World 3'"
+      folders:
+        - name: "Empty Folder"
+          commands:
+          folders:

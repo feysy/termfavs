@@ -1,0 +1,61 @@
+MainScreen {
+    background: rgb(0, 0, 0);
+    width: 100%;
+    height: 100%;
+}
+
+#left {
+    width: 40;
+    background: rgb(41, 46, 51);
+}
+
+#right {
+    width: 1fr;
+    height: 100%;
+    background: rgba(0, 0, 0, 0);
+}
+
+#lbl_msg {
+    width: 100%;
+    height: 100%;
+    background: rgb(54, 54, 54);
+    content-align-horizontal: center;
+    content-align-vertical: middle;
+}
+
+#form_area {
+    height: 22;
+    border: solid green;
+}
+
+.edit_label {
+    padding: 1;
+    width: 20;
+    content-align-horizontal: right;
+}
+
+.edit_text {
+    width: 1fr;
+    content-align-horizontal: left;
+}
+
+#text_command_desc {
+    height: 5;
+}
+
+#lbl_description {
+    height: 3;
+}
+
+.one_line {
+    height: 1;
+}
+
+#text_command {
+    height: 5;
+}
+
+#bttn_run_container {
+    padding: 1;
+    align-horizontal: right;
+}
